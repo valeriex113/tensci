@@ -6,6 +6,7 @@ import { Proposal } from "./pages/proposal";
 import { ExampleProps } from "./pages/example_prop";
 import { ExamplePub } from "./pages/example_pub";
 import { NotFoundPage } from "./NotFoundPage";
+import { About } from "./pages/about";
 
 
 export const router = createBrowserRouter([
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
       { path: "example_pub", Component: ExamplePub },
       { path: "example_props", Component: ExampleProps },
       { path: "*", Component: NotFoundPage },
+      { path: "about, Component: About"}
     ],
   },
 ]);
