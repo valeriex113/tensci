@@ -1,3 +1,3 @@
-export function Proposal () {
+export function Proposal() {
     return;
 }

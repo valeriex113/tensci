@@ -1,10 +1,11 @@
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, ScrollRestoration } from "react-router";
 import { Search } from "lucide-react";
 
  
 export function RootLayout() {
   return (
     <div>
+      <ScrollRestoration />
       <header>
         <p>TenSci</p>
         <nav className="inline-flex gap-4">

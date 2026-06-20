@@ -7,7 +7,7 @@ export function ProposalCard({ project }) {
   const percentFunded = (project.currentAmount / project.goalAmount) * 100;
 
   return (
-    <Link to={`/project/${project.id}`}>
+    <Link to={`/proposal/${project.id}`}>
       <div
         data-slot="card"
         className="bg-card text-card-foreground flex flex-col gap-3 rounded-xl border h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden group"
@@ -39,14 +39,14 @@ export function ProposalCard({ project }) {
         <div data-slot="card-content" className="px-4 pb-2">
           <div className="space-y-1.5">
             <ProgressPrimitive.Root
-            data-slot="progress"
-            className="bg-gray-200 relative h-1.5 w-full overflow-hidden rounded-full"
+              data-slot="progress"
+              className="bg-gray-200 relative h-1.5 w-full overflow-hidden rounded-full"
             >
-            <ProgressPrimitive.Indicator
+              <ProgressPrimitive.Indicator
                 data-slot="progress-indicator"
                 className="bg-blue-600 h-full w-full flex-1 transition-all"
                 style={{ transform: `translateX(-${100 - (percentFunded || 0)}%)` }}
-            />
+              />
             </ProgressPrimitive.Root>
             <div className="flex items-center justify-between text-xs">
               <div>
@@ -84,7 +84,7 @@ export function ProposalCard({ project }) {
 
 export function PublicationCard({ project }) {
   return (
-    <Link to={`/project/${project.id}`}>
+    <Link to={`/publication/${project.id}`}>
 
       <div
         data-slot="card"
@@ -117,9 +117,9 @@ export function PublicationCard({ project }) {
         <div data-slot="card-content" className="px-4 pb-2">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-base">
-                  ${project.goalAmount.toLocaleString()}
-                </span>
+              <span className="font-bold text-base">
+                ${project.goalAmount.toLocaleString()}
+              </span>
             </div>
           </div>
         </div>
@@ -128,14 +128,14 @@ export function PublicationCard({ project }) {
           data-slot="card-footer"
           className="px-4 pb-4 flex items-center justify-between w-full text-xs text-gray-500 pt-2 border-t mt-auto"
         >
-            <div className="flex items-center gap-1">
-                <Users className="h-3.5 w-3.5" />
-                <span>{project.backers.toLocaleString()} supporters </span>
-            </div>
-            <div className="flex items-center gap-1">
-                <Clock className="h-3.5 w-3.5" />
-                <span>{project.daysAgo} days ago</span>
-            </div>
+          <div className="flex items-center gap-1">
+            <Users className="h-3.5 w-3.5" />
+            <span>{project.backers.toLocaleString()} supporters </span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Clock className="h-3.5 w-3.5" />
+            <span>{project.daysAgo} days ago</span>
+          </div>
         </div>
       </div>
     </Link>
