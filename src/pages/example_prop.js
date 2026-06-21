@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router";
 import { Users, Clock, Calendar, PieChart, Target, Share, Heart, PlayCircle, MapPin, Building2, CheckCircle2 } from "lucide-react";
+import { proposalImages } from "../data/proposalImages";
+import { mockProposals } from "../data/MockData";
 
 export function ExampleProps() {
+  const project = mockProposals.find((p) => p.id === "9");
+  const image = proposalImages[project.id];
+  const percentFunded = Math.round((project.currentAmount / project.goalAmount) * 100);
+
   return (
     <div className="bg-white min-h-screen font-sans animate-fade-in pb-20">
       {/* ── Breadcrumb ── */}
@@ -12,7 +18,7 @@ export function ExampleProps() {
           <span className="opacity-50">›</span>
           <Link to="/proposals" className="text-blue-600 hover:text-blue-800 hover:underline transition-colors">Proposals</Link>
           <span className="opacity-50">›</span>
-          <span className="text-gray-600 font-medium">Project O.A.S.I.S</span>
+          <span className="text-gray-600 font-medium">{project.title}</span>
         </div>
       </div>
 
@@ -20,25 +26,27 @@ export function ExampleProps() {
       <section className="max-w-7xl mx-auto px-6 lg:px-8 pt-10 pb-16">
         <div className="flex flex-col items-center text-center mb-10 max-w-4xl mx-auto">
           <span className="inline-block text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full mb-4">
-            Environmental Science
+            {project.category}
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 tracking-tight" style={{ color: "#303841" }}>
-            Project O.A.S.I.S: Autonomous Ocean Microplastic Filtration Systems
+            {project.title}
           </h1>
           <p className="text-xl text-gray-600 leading-relaxed max-w-3xl">
-            Developing self-sustaining, AI-powered underwater drones to detect, map, and eliminate microplastic pollution in our most vulnerable coral reefs.
+            A behavioral economics framework for identifying and intervening on early-warning
+            psychological signals in algorithmic trading systems before they cascade into
+            systemic financial crises.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
 
-          {/* ── Main Media (Video/Image) ── */}
+          {/* ── Main Media (Image) ── */}
           <div className="lg:col-span-7 xl:col-span-8 flex flex-col gap-4">
             <div className="relative aspect-video rounded-2xl overflow-hidden shadow-xl bg-gray-900 group cursor-pointer border border-gray-200">
               <img
-                src="/ocean_drone_proposal.png"
-                alt="Underwater drone"
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-60 transition-opacity duration-300"
+                src={image}
+                alt={project.title}
+                className="w-full h-full object-cover opacity-90 group-hover:opacity-70 transition-opacity duration-300"
               />
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-20 h-20 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -47,12 +55,12 @@ export function ExampleProps() {
               </div>
               <div className="absolute bottom-4 left-4 right-4 flex justify-between text-white text-sm font-medium drop-shadow-md">
                 <span>Project Pitch Video</span>
-                <span>03:45</span>
+                <span>04:12</span>
               </div>
             </div>
             <div className="flex items-center gap-4 text-sm text-gray-500 justify-center lg:justify-start">
-              <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> Great Barrier Reef, Australia</span>
-              <span className="flex items-center gap-1"><Building2 className="w-4 h-4" /> Sydney Institute of Marine Science</span>
+              <span className="flex items-center gap-1"><MapPin className="w-4 h-4" /> London, United Kingdom</span>
+              <span className="flex items-center gap-1"><Building2 className="w-4 h-4" /> {project.institution}</span>
             </div>
           </div>
 
@@ -60,15 +68,17 @@ export function ExampleProps() {
           <div className="lg:col-span-5 xl:col-span-4 flex flex-col justify-center">
             <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-xl shadow-blue-900/5 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1.5 bg-gray-100">
-                <div className="h-full bg-emerald-500" style={{ width: '82%' }}></div>
+                <div className="h-full" style={{ width: `${percentFunded}%`, backgroundColor: "#76ABAE" }}></div>
               </div>
 
               <div className="mb-8">
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-5xl font-extrabold tracking-tight" style={{ color: "#303841" }}>$410,000</span>
+                  <span className="text-5xl font-extrabold tracking-tight" style={{ color: "#303841" }}>
+                    ${project.currentAmount.toLocaleString()}
+                  </span>
                   <span className="text-xl text-gray-500 font-medium">USD</span>
                 </div>
-                <p className="text-gray-500 font-medium">pledged of $500,000 goal</p>
+                <p className="text-gray-500 font-medium">pledged of ${project.goalAmount.toLocaleString()} goal</p>
               </div>
 
               <div className="space-y-6 mb-8">
@@ -77,7 +87,7 @@ export function ExampleProps() {
                     <Users className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold" style={{ color: "#303841" }}>1,245</p>
+                    <p className="text-2xl font-bold" style={{ color: "#303841" }}>{project.backers.toLocaleString()}</p>
                     <p className="text-sm text-gray-500 font-medium">Backers</p>
                   </div>
                 </div>
@@ -87,8 +97,8 @@ export function ExampleProps() {
                     <Clock className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold" style={{ color: "#303841" }}>14</p>
-                    <p className="text-sm text-gray-500 font-medium">Days to go (Ends Oct 30)</p>
+                    <p className="text-2xl font-bold" style={{ color: "#303841" }}>{project.daysLeft}</p>
+                    <p className="text-sm text-gray-500 font-medium">Days to go</p>
                   </div>
                 </div>
               </div>
@@ -106,7 +116,9 @@ export function ExampleProps() {
                   </button>
                 </div>
               </div>
-              <p className="text-xs text-center text-gray-500 mt-4">All or nothing. This project will only be funded if it reaches its goal by Oct 30, 2026.</p>
+              <p className="text-xs text-center text-gray-500 mt-4">
+                All or nothing. This project will only be funded if it reaches its ${project.goalAmount.toLocaleString()} goal before the campaign ends.
+              </p>
             </div>
           </div>
         </div>
@@ -118,8 +130,8 @@ export function ExampleProps() {
           <nav className="flex gap-8 overflow-x-auto hide-scrollbar">
             <a href="#campaign" className="py-4 text-sm font-bold border-b-2 whitespace-nowrap" style={{ color: "#76ABAE", borderColor: "#76ABAE" }}>Campaign</a>
             <a href="#faq" className="py-4 text-sm font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">FAQ</a>
-            <a href="#updates" className="py-4 text-sm font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">Updates (3)</a>
-            <a href="#comments" className="py-4 text-sm font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">Comments (142)</a>
+            <a href="#updates" className="py-4 text-sm font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">Updates ({project.updates})</a>
+            <a href="#comments" className="py-4 text-sm font-medium text-gray-500 hover:text-gray-900 whitespace-nowrap">Comments (89)</a>
           </nav>
         </div>
       </div>
@@ -155,19 +167,29 @@ export function ExampleProps() {
             </h2>
             <div className="prose prose-lg text-gray-700 max-w-none">
               <p className="lead text-xl text-gray-600 mb-6 font-medium">
-                Every year, 8 million metric tons of plastic enter our oceans. While large debris is visible, the silent killer is microplastics—particles less than 5mm in length that infiltrate marine food webs.
+                Over 70% of trading volume in major equity markets is now executed by algorithms,
+                many of which react to the same signals within microseconds of one another. When
+                enough of these systems converge on the same response at once, the result isn't
+                a single bad trade — it's a flash crash.
               </p>
               <p className="mb-4">
-                Current cleanup efforts focus on surface-level macro-plastics (like the Great Pacific Garbage Patch). However, microplastics suspend throughout the water column, actively degrading the health of coral polyps and entering the dietary tracts of essential marine species.
+                Existing circuit-breaker mechanisms intervene only after a crash has already
+                begun, halting trading once prices have moved beyond a threshold. By that point,
+                the damage to liquidity, investor confidence, and downstream markets is already
+                underway. Our research asks a different question: can the early behavioral
+                signatures that precede a cascade — herding patterns, abrupt shifts in order-book
+                sentiment, correlated algorithmic "panic" responses — be detected and acted on
+                before the threshold is ever crossed?
               </p>
               <p>
-                Our research team at the Sydney Institute of Marine Science has spent the last three years designing <strong>O.A.S.I.S. (Oceanic Autonomous Swarm Filtration System)</strong>. These are biomimetic, manta-ray inspired drones that utilize advanced spectroscopic sensors to identify and capture microplastics without harming organic zooplankton.
+                Our team at the <strong>London School of Economics</strong> has spent the past two years
+                building a behavioral-finance model that treats algorithmic trading systems not
+                as purely rational actors, but as agents susceptible to the same herding and
+                overreaction dynamics long observed in human markets. We call this framework{" "}
+                <strong>Project SENTINEL (Systemic Early-warning Network for Trading Instability and Erratic Loss)</strong>.
               </p>
               <figure className="my-8 rounded-xl overflow-hidden border border-gray-200" style={{ backgroundColor: "#F5F5F5" }}>
-                <div className="aspect-video flex flex-col items-center justify-center text-center p-8" style={{ backgroundColor: "#EAF2F2", color: "#303841" }}>
-                  <div className="text-5xl mb-4">🌊 🤖 🦠</div>
-                  <p className="text-sm font-medium">Diagram demonstrating the micro-filtration mechanism distinguishing between organic matter and synthetic polymers.</p>
-                </div>
+                <img src={image} alt="Stock market data visualization" className="w-full aspect-video object-cover" />
               </figure>
             </div>
           </div>
@@ -183,22 +205,22 @@ export function ExampleProps() {
                 <li className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold shrink-0 mt-1">1</div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Build 5 Prototype O.A.S.I.S. Drones</h3>
-                    <p className="text-gray-600 leading-relaxed">Transition from lab-tested scale models to 5 fully functional, ocean-ready prototypes constructed from non-toxic, pressure-resistant materials.</p>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Build a Behavioral Signal Index</h3>
+                    <p className="text-gray-600 leading-relaxed">Construct a composite index of herding and overreaction indicators derived from historical order-book data across five major flash-crash events since 2010.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold shrink-0 mt-1">2</div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Conduct a 6-Month Reef Deployment</h3>
-                    <p className="text-gray-600 leading-relaxed">Deploy the drone swarm in a controlled sector of the Great Barrier Reef. Monitor their efficiency in removing microplastics via a mesh-filtration system while verifying zero impact on local fauna.</p>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Run a 6-Month Simulated Market Trial</h3>
+                    <p className="text-gray-600 leading-relaxed">Deploy the early-warning model in a sandboxed market simulation alongside real historical data feeds to measure detection lead time ahead of known instability events.</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold shrink-0 mt-1">3</div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Open-Source the AI Mapping Data</h3>
-                    <p className="text-gray-600 leading-relaxed">The drones will map plastic concentration density in 3D. We pledge to publish this dataset openly to aid global policy-makers and climate researchers.</p>
+                    <h3 className="text-xl font-bold mb-2" style={{ color: "#303841" }}>Publish an Open Policy Framework</h3>
+                    <p className="text-gray-600 leading-relaxed">Release our findings and a proposed intervention framework to regulators and exchanges, aimed at informing the next generation of pre-emptive (not just reactive) market-stability tools.</p>
                   </div>
                 </li>
               </ul>
@@ -214,27 +236,27 @@ export function ExampleProps() {
             <div className="relative border-l-2 border-gray-200 ml-5 space-y-12">
               <div className="relative pl-8">
                 <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-white"></div>
-                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 1: Component Procurement & Assembly</h3>
+                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 1: Historical Data Acquisition</h3>
                 <span className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-2 block">Months 1-2</span>
-                <p className="text-gray-600">Sourcing marine-grade titanium, custom PCB fabrication, and assembling the 5 prototype units in our Sydney workshop.</p>
+                <p className="text-gray-600">Licensing and cleaning high-frequency order-book data from five historical flash-crash periods, including the 2010 "Flash Crash" and the 2015 ETF mispricing event.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
-                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 2: Tank Testing & AI Calibration</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 3-4</span>
-                <p className="text-gray-600">Testing the swarm algorithms and obstacle avoidance systems in the university's controlled wave pool facility.</p>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-white"></div>
+                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 2: Behavioral Model Calibration</h3>
+                <span className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2 block">Months 3-4</span>
+                <p className="text-gray-600">Training the herding-detection model against labeled instability events, validating signal lead-time against ground-truth crash timestamps.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
-                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 3: Ocean Deployment</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 5-10</span>
-                <p className="text-gray-600">Active deployment in the Great Barrier Reef. The drones will operate autonomously, returning to a solar-powered buoy to recharge and offload captured plastics.</p>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-white"></div>
+                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 3: Sandboxed Market Simulation</h3>
+                <span className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-2 block">Months 5-9</span>
+                <p className="text-gray-600">Running the early-warning system live against simulated and replayed market feeds, stress-testing false-positive rates under normal volatility.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
-                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 4: Data Analysis & Publication</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 11-12</span>
-                <p className="text-gray-600">Compiling the filtration efficacy data, drafting the research paper, and releasing the 3D concentration maps to the public domain.</p>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-white"></div>
+                <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 4: Policy Framework & Publication</h3>
+                <span className="text-sm font-bold text-orange-600 uppercase tracking-wider mb-2 block">Months 10-12</span>
+                <p className="text-gray-600">Drafting the regulatory policy brief, finalizing the academic paper, and engaging exchange partners on pilot adoption.</p>
               </div>
             </div>
           </div>
@@ -249,23 +271,23 @@ export function ExampleProps() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="flex flex-col gap-4">
                   <div className="w-16 h-16 rounded-full border border-gray-200 flex items-center justify-center text-2xl font-bold text-gray-600" style={{ background: "linear-gradient(135deg, #EAF2F2, #F5F5F5)" }}>
-                    SC
+                    RV
                   </div>
                   <div>
-                    <h4 className="font-bold text-xl" style={{ color: "#303841" }}>Dr. Sarah Chen</h4>
+                    <h4 className="font-bold text-xl" style={{ color: "#303841" }}>{project.researcher}</h4>
                     <p className="text-sm font-medium mb-3" style={{ color: "#76ABAE" }}>Lead Principal Investigator</p>
-                    <p className="text-sm text-gray-600 leading-relaxed">Ph.D. in Marine Robotics from MIT. 10+ years experience in autonomous underwater vehicles.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">Ph.D. in Behavioral Economics from LSE. 15+ years studying market microstructure and crisis dynamics.</p>
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-4">
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-100 to-pink-100 border border-gray-200 flex items-center justify-center text-2xl font-bold text-gray-600">
-                    JM
+                    NK
                   </div>
                   <div>
-                    <h4 className="font-bold text-xl" style={{ color: "#303841" }}>Dr. James Martinez</h4>
-                    <p className="text-sm font-medium mb-3" style={{ color: "#76ABAE" }}>Co-Investigator, Oceanography</p>
-                    <p className="text-sm text-gray-600 leading-relaxed">Expert in fluid dynamics and microplastic distribution patterns in pelagic zones.</p>
+                    <h4 className="font-bold text-xl" style={{ color: "#303841" }}>Dr. Nadia Kessler</h4>
+                    <p className="text-sm font-medium mb-3" style={{ color: "#76ABAE" }}>Co-Investigator, Quantitative Finance</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">Specialist in high-frequency trading systems and algorithmic risk modeling.</p>
                   </div>
                 </div>
               </div>
@@ -283,47 +305,79 @@ export function ExampleProps() {
               Budget Breakdown
             </h2>
             <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <div className="space-y-6 mb-6">
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Hardware & Fabrication</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>45%</span>
+              <div className="flex flex-col md:flex-row items-center gap-10">
+                {/* Pie Chart */}
+                <div className="w-48 h-48 rounded-full shrink-0 shadow-inner" style={{
+                  background: "conic-gradient(#76ABAE 0% 35%, #10b981 35% 65%, #a855f7 65% 85%, #f97316 85% 100%)"
+                }}></div>
+
+                {/* Itemized List */}
+                <div className="flex-1 space-y-4 w-full">
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#76ABAE" }}></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Data Licensing & Acquisition</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">High-frequency order-book datasets (NYSE/NASDAQ), 3rd-party data cleaning APIs, historical tick data feeds.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.35).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">35%</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="h-3 rounded-full" style={{ width: '45%', backgroundColor: "#76ABAE" }}></div>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-emerald-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Model Development & Compute</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Cloud GPU instances (AWS/GCP) for training machine learning models, software licenses, data storage costs.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.30).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">30%</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Field Operations & Logistics</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>30%</span>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-purple-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Simulation Infrastructure</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Development of sandboxed trading environment, server hosting for low-latency testing, network infrastructure.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.20).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">20%</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-emerald-500 h-3 rounded-full" style={{ width: '30%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Data Analysis & Servers</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>15%</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-purple-500 h-3 rounded-full" style={{ width: '15%' }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Overhead & Compliance</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>10%</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-orange-500 h-3 rounded-full" style={{ width: '10%' }}></div>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-orange-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Policy Outreach & Publication</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Academic conference travel (e.g., AFA, WFA), open-access publication fees, hosting workshops with regulators.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.15).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">15%</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-gray-500 p-4 rounded-xl" style={{ backgroundColor: "#F5F5F5" }}>
-                * Funds strictly allocated to project execution. Institutional salaries are covered separately by existing grants.
-              </p>
             </div>
           </div>
 
@@ -339,26 +393,26 @@ export function ExampleProps() {
                   <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center text-base font-bold text-gray-600 shrink-0">A</div>
                   <div className="flex-1">
                     <p className="text-base font-semibold" style={{ color: "#303841" }}>Anonymous</p>
-                    <p className="text-sm text-gray-500">Pledged $500 • 2 hrs ago</p>
+                    <p className="text-sm text-gray-500">Pledged $250 • 3 hrs ago</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-4 border-b border-gray-100 pb-6">
-                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold shrink-0" style={{ backgroundColor: "#EAF2F2", color: "#76ABAE" }}>MJ</div>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-base font-bold shrink-0" style={{ backgroundColor: "#EAF2F2", color: "#76ABAE" }}>TH</div>
                   <div className="flex-1">
-                    <p className="text-base font-semibold" style={{ color: "#303841" }}>Michael Jenkins</p>
-                    <p className="text-sm text-gray-500">Pledged $150 • 5 hrs ago</p>
+                    <p className="text-base font-semibold" style={{ color: "#303841" }}>Thomas Holloway</p>
+                    <p className="text-sm text-gray-500">Pledged $1,000 • 6 hrs ago</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-base font-bold text-emerald-700 shrink-0">OL</div>
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-base font-bold text-emerald-700 shrink-0">QR</div>
                   <div className="flex-1">
-                    <p className="text-base font-semibold" style={{ color: "#303841" }}>OceanLife Foundation</p>
-                    <p className="text-sm text-gray-500">Pledged $10,000 • 1 day ago</p>
+                    <p className="text-base font-semibold" style={{ color: "#303841" }}>Quantra Research Group</p>
+                    <p className="text-sm text-gray-500">Pledged $15,000 • 1 day ago</p>
                   </div>
                 </li>
               </ul>
               <button className="w-full mt-8 py-3 text-sm font-semibold rounded-xl transition-colors" style={{ color: "#76ABAE", backgroundColor: "#EAF2F2" }}>
-                See all 1,245 backers
+                See all {project.backers.toLocaleString()} backers
               </button>
             </div>
           </div>
