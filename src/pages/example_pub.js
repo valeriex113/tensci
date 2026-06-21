@@ -148,9 +148,7 @@ export function ExamplePub() {
                     <div className="flex flex-wrap gap-6 p-4 md:px-5 rounded-lg mb-6 border border-gray-100" style={{ backgroundColor: "#F5F5F5" }}>
                         <div className="flex flex-col gap-1">
                             <span className="text-xs font-bold uppercase tracking-wide text-gray-500">DOI</span>
-                            <a href="#" className="text-sm font-medium text-blue-600 font-mono hover:underline">
-                                10.1234/example.2026.00001
-                            </a>
+        
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-xs font-bold uppercase tracking-wide text-gray-500">Received</span>

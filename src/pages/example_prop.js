@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router";
-import * as ProgressPrimitive from "@radix-ui/react-progress";
-import { Users, Clock, Calendar, PieChart, Target, ChevronRight, Share, Heart, PlayCircle, MapPin, Building2, CheckCircle2 } from "lucide-react";
+import { Users, Clock, Calendar, PieChart, Target, Share, Heart, PlayCircle, MapPin, Building2, CheckCircle2 } from "lucide-react";
 
 export function ExampleProps() {
-  const percentFunded = 82;
-
   return (
     <div className="bg-white min-h-screen font-sans animate-fade-in pb-20">
       {/* ── Breadcrumb ── */}
