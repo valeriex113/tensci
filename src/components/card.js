@@ -98,15 +98,6 @@ export function PublicationCard({ project }) {
         data-slot="card"
         className="bg-card text-card-foreground flex flex-col gap-3 rounded-xl border h-full hover:shadow-lg transition-shadow cursor-pointer overflow-hidden group"
       >
-
-        <div className="aspect-video overflow-hidden bg-gray-100">
-          <img
-            src={project.imageUrl}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        </div>
-
         <div
           data-slot="card-header"
           className="@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-4 pt-3"
@@ -117,7 +108,7 @@ export function PublicationCard({ project }) {
           </div>
 
           <h3
-            className="text-base font-semibold line-clamp-2 transition-colors leading-snug group-hover:text-[#76ABAE]"
+            className="font-bold text-base font-semibold line-clamp-2 transition-colors leading-snug group-hover:text-[#76ABAE]"
             style={{ color: "#303841" }}
           >
             {project.title}
@@ -128,8 +119,8 @@ export function PublicationCard({ project }) {
         <div data-slot="card-content" className="px-4 pb-2">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-base" style={{ color: "#303841" }}>
-                ${project.goalAmount.toLocaleString()}
+              <span className="text-base" style={{ color: "#303841" }}>
+                {project.description}
               </span>
             </div>
           </div>
@@ -145,7 +136,7 @@ export function PublicationCard({ project }) {
           </div>
           <div className="flex items-center gap-1">
             <Clock className="h-3.5 w-3.5" />
-            <span>{project.daysAgo} days ago</span>
+            <span>{project.publishedDate}</span>
           </div>
         </div>
       </div>

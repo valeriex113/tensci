@@ -244,12 +244,12 @@ export const mockPublications = [
     researcher: "Dr. Aris Thorne",
     institution: "MIT Energy Initiative",
     category: "Technology",
-    goalAmount: 450000,
+    description:
+      "A solid-state lithium-air battery design that pushes energy density well beyond current lithium-ion cells, aimed at long-range electric vehicles and grid storage.",
     backers: 1892,
-    daysAgo: 2,
-    imageUrl: "clean energy laboratory engineering",
+    publishedDate: "19 June 2026",
     tags: ["Battery Tech", "Renewable Energy", "Materials Science"],
-    updates: 4
+    updates: 4,
   },
   {
     id: "18",
@@ -257,12 +257,12 @@ export const mockPublications = [
     researcher: "Prof. Elena Rostova",
     institution: "London School of Economics",
     category: "Economics",
-    goalAmount: 125000,
+    description:
+      "An analysis of how emerging deep-sea mining regulations reshape global supply chains, labor markets, and coastal economies dependent on ocean resources.",
     backers: 341,
-    daysAgo: 3,
-    imageUrl: "ocean logistics industrial shipping",
+    publishedDate: "3 March 2026",
     tags: ["Macroeconomics", "Environmental Policy", "Global Trade"],
-    updates: 2
+    updates: 2,
   },
   {
     id: "19",
@@ -270,12 +270,12 @@ export const mockPublications = [
     researcher: "Dr. Marcus Vance",
     institution: "Johns Hopkins Oncology",
     category: "Medical Research",
-    goalAmount: 680000,
+    description:
+      "A targeted RNA degradation therapy designed to silence the genetic drivers of pancreatic cancer, one of the deadliest and most treatment-resistant cancers.",
     backers: 2415,
-    daysAgo: 8,
-    imageUrl: "molecular biology microscope analysis",
+    publishedDate: "28 November 2025",
     tags: ["Oncology", "RNA Therapeutics", "Genetics"],
-    updates: 11
+    updates: 11,
   },
   {
     id: "20",
@@ -283,12 +283,12 @@ export const mockPublications = [
     researcher: "Dr. Chloe Lin",
     institution: "UC Berkeley AI Lab",
     category: "Environmental Science",
-    goalAmount: 220000,
+    description:
+      "A computer vision system trained on drone and satellite imagery to detect early-stage wildfires minutes after ignition, before they spread out of control.",
     backers: 912,
-    daysAgo: 12,
-    imageUrl: "aerial drone forest landscape",
+    publishedDate: "14 February 2026",
     tags: ["Computer Vision", "Wildfire Mitigation", "AI"],
-    updates: 6
+    updates: 6,
   },
   {
     id: "21",
@@ -296,11 +296,102 @@ export const mockPublications = [
     researcher: "Dr. Hans Vermeer",
     institution: "Max Planck Institute for Astrophysics",
     category: "Astronomy",
-    goalAmount: 550000,
+    description:
+      "A new survey producing the highest-resolution map yet of the cosmic microwave background, refining our understanding of the early universe's structure.",
     backers: 1530,
-    daysAgo: 31,
-    imageUrl: "satellite deep space dish antenna",
+    publishedDate: "7 August 2024",
     tags: ["Cosmology", "Astrophysics", "Big Bang Theory"],
-    updates: 9
-  }
-]
+    updates: 9,
+  },
+  {
+    id: "22",
+    title: "Biodegradable Packaging from Mycelium Composites",
+    researcher: "Dr. Priya Nair",
+    institution: "Delft University of Technology",
+    category: "Materials Science",
+    description:
+      "A fully biodegradable packaging material grown from mycelium composites, engineered to match the strength and shelf life of conventional plastic foam.",
+    backers: 1204,
+    publishedDate: "22 January 2026",
+    tags: ["Sustainability", "Biomaterials", "Packaging"],
+    updates: 7,
+  },
+  {
+    id: "23",
+    title: "Real-Time Sign Language Translation Using Wearable Sensors",
+    researcher: "Dr. Daniel Osei",
+    institution: "Georgia Institute of Technology",
+    category: "Technology",
+    description:
+      "A wearable glove and AI translation pipeline that converts sign language gestures into spoken or written text in real time, built with the Deaf community.",
+    backers: 2087,
+    publishedDate: "30 September 2025",
+    tags: ["Accessibility", "Wearables", "AI"],
+    updates: 10,
+  },
+  {
+    id: "24",
+    title: "Soil Microbiome Restoration After Wildfire Damage",
+    researcher: "Prof. Mariana Cole",
+    institution: "University of Colorado Boulder",
+    category: "Environmental Science",
+    description:
+      "A field study on reintroducing native microbial communities to wildfire-scarred soil, aimed at accelerating ecosystem recovery and reducing erosion.",
+    backers: 678,
+    publishedDate: "11 May 2025",
+    tags: ["Ecology", "Soil Science", "Wildfire Recovery"],
+    updates: 5,
+  },
+  {
+    id: "25",
+    title: "Affordable Brain-Computer Interfaces for Paralysis Patients",
+    researcher: "Dr. Kenji Watanabe",
+    institution: "University of Tokyo",
+    category: "Medical Research",
+    description:
+      "A low-cost, non-invasive brain-computer interface that lets patients with severe paralysis control computers and assistive devices using only their thoughts.",
+    backers: 3120,
+    publishedDate: "5 December 2023",
+    tags: ["Neurotechnology", "Assistive Devices", "Paralysis"],
+    updates: 13,
+  },
+  {
+    id: "26",
+    title: "Predicting Coral Bleaching Events with Satellite Thermal Data",
+    researcher: "Dr. Fatima Al-Sayed",
+    institution: "James Cook University",
+    category: "Marine Biology",
+    description:
+      "A predictive model combining satellite sea-surface temperature data with historical bleaching records to give reef managers weeks of early warning.",
+    backers: 845,
+    publishedDate: "17 April 2026",
+    tags: ["Coral Reefs", "Climate Science", "Remote Sensing"],
+    updates: 8,
+  },
+  {
+    id: "27",
+    title: "Decentralized Identity Verification for Refugees",
+    researcher: "Dr. Samuel Okafor",
+    institution: "University of Cape Town",
+    category: "Public Policy",
+    description:
+      "A blockchain-based identity verification system that lets displaced people maintain proof of identity, education, and credentials across borders.",
+    backers: 1456,
+    publishedDate: "9 October 2024",
+    tags: ["Digital Identity", "Human Rights", "Blockchain"],
+    updates: 6,
+  },
+  {
+    id: "28",
+    title: "Quantum-Resistant Encryption for Public Infrastructure",
+    researcher: "Prof. Lena Kowalski",
+    institution: "ETH Zurich",
+    category: "Computer Science",
+    description:
+      "New cryptographic protocols designed to remain secure against quantum computer attacks, intended for adoption by power grids and financial systems.",
+    backers: 1980,
+    publishedDate: "2 July 2025",
+    tags: ["Cryptography", "Quantum Computing", "Cybersecurity"],
+    updates: 9,
+  },
+];
