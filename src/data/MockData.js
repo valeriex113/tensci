@@ -21,7 +21,7 @@ export const mockProposals = [
     currentAmount: 387500,
     backers: 4243,
     daysLeft: 12,
-    imageUrl: "medical research laboratory",
+    imageUrl: "./pics/proposals/1",
     tags: ["Neuroscience", "Clinical Trial", "Drug Development"],
     updates: 8
   },
@@ -238,7 +238,7 @@ export const mockProposals = [
 ];
 
 export const mockPublications = [
-    {
+  {
     id: "17",
     title: "Next-Generation Solid State Lithium-Air Batteries",
     researcher: "Dr. Aris Thorne",

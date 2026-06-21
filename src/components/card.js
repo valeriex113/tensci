@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router";
 import { Users, Clock } from "lucide-react";
 import * as ProgressPrimitive from "@radix-ui/react-progress";
+import { proposalImages } from "../data/proposalImages";
 
 export function ProposalCard({ project }) {
   const percentFunded = (project.currentAmount / project.goalAmount) * 100;
+  const image = proposalImages[project.id];
 
   return (
     <Link to={`/proposal/${project.id}`}>
@@ -15,7 +17,7 @@ export function ProposalCard({ project }) {
         {/* Aspect Video Image Wrapper */}
         <div className="aspect-video overflow-hidden bg-gray-100">
           <img
-            src={project.imageUrl}
+            src={image}
             alt={project.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

@@ -32,11 +32,11 @@ export function RootLayout() {
               <Link to="/" className="hover:text-blue-600">
                 Home
               </Link>
-              <Link to="/publications" className="hover:text-blue-600">
-                Publications
-              </Link>
               <Link to="/proposals" className="hover:text-blue-600">
                 Proposals
+              </Link>
+              <Link to="/publications" className="hover:text-blue-600">
+                Publications
               </Link>
               <Link to="/about" className="hover:text-blue-600">
                 About Us
