@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import * as ProgressPrimitive from "@radix-ui/react-progress";
-import { Users, Clock, Calendar, PieChart, Target, ChevronRight, Share, Heart, PlayCircle, MapPin, Building2, CheckCircle2 } from "lucide-react";
+import { Users, Clock, Calendar, PieChart, Target, Share, Heart, PlayCircle, MapPin, Building2, CheckCircle2 } from "lucide-react";
 import { proposalImages } from "../data/proposalImages";
 import { mockProposals } from "../data/MockData";
 
@@ -242,21 +241,21 @@ export function ExampleProps() {
                 <p className="text-gray-600">Licensing and cleaning high-frequency order-book data from five historical flash-crash periods, including the 2010 "Flash Crash" and the 2015 ETF mispricing event.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-blue-500 ring-4 ring-white"></div>
                 <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 2: Behavioral Model Calibration</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 3-4</span>
+                <span className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2 block">Months 3-4</span>
                 <p className="text-gray-600">Training the herding-detection model against labeled instability events, validating signal lead-time against ground-truth crash timestamps.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-emerald-500 ring-4 ring-white"></div>
                 <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 3: Sandboxed Market Simulation</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 5-9</span>
+                <span className="text-sm font-bold text-emerald-600 uppercase tracking-wider mb-2 block">Months 5-9</span>
                 <p className="text-gray-600">Running the early-warning system live against simulated and replayed market feeds, stress-testing false-positive rates under normal volatility.</p>
               </div>
               <div className="relative pl-8">
-                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                <div className="absolute -left-2 top-1.5 w-4 h-4 rounded-full bg-orange-500 ring-4 ring-white"></div>
                 <h3 className="text-lg font-bold" style={{ color: "#303841" }}>Phase 4: Policy Framework & Publication</h3>
-                <span className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-2 block">Months 10-12</span>
+                <span className="text-sm font-bold text-orange-600 uppercase tracking-wider mb-2 block">Months 10-12</span>
                 <p className="text-gray-600">Drafting the regulatory policy brief, finalizing the academic paper, and engaging exchange partners on pilot adoption.</p>
               </div>
             </div>
@@ -306,41 +305,76 @@ export function ExampleProps() {
               Budget Breakdown
             </h2>
             <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-              <div className="space-y-6 mb-6">
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Data Licensing & Acquisition</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>35%</span>
+              <div className="flex flex-col md:flex-row items-center gap-10">
+                {/* Pie Chart */}
+                <div className="w-48 h-48 rounded-full shrink-0 shadow-inner" style={{
+                  background: "conic-gradient(#76ABAE 0% 35%, #10b981 35% 65%, #a855f7 65% 85%, #f97316 85% 100%)"
+                }}></div>
+
+                {/* Itemized List */}
+                <div className="flex-1 space-y-4 w-full">
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0" style={{ backgroundColor: "#76ABAE" }}></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Data Licensing & Acquisition</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">High-frequency order-book datasets (NYSE/NASDAQ), 3rd-party data cleaning APIs, historical tick data feeds.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.35).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">35%</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="h-3 rounded-full" style={{ width: "35%", backgroundColor: "#76ABAE" }}></div>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-emerald-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Model Development & Compute</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Cloud GPU instances (AWS/GCP) for training machine learning models, software licenses, data storage costs.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.30).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">30%</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Model Development & Compute</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>30%</span>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-purple-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Simulation Infrastructure</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Development of sandboxed trading environment, server hosting for low-latency testing, network infrastructure.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.20).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">20%</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-emerald-500 h-3 rounded-full" style={{ width: "30%" }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Simulation Infrastructure</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>20%</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-purple-500 h-3 rounded-full" style={{ width: "20%" }}></div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-base mb-2">
-                    <span className="font-medium text-gray-700">Policy Outreach & Publication</span>
-                    <span className="font-bold" style={{ color: "#303841" }}>15%</span>
-                  </div>
-                  <div className="w-full bg-gray-100 rounded-full h-3">
-                    <div className="bg-orange-500 h-3 rounded-full" style={{ width: "15%" }}></div>
+
+                  <div className="flex flex-col p-4 rounded-xl bg-gray-50 border border-gray-100">
+                    <div className="flex justify-between items-start">
+                      <div className="flex items-start gap-3">
+                        <div className="w-3 h-3 rounded-full mt-1.5 shrink-0 bg-orange-500"></div>
+                        <div>
+                          <span className="font-bold text-gray-800">Policy Outreach & Publication</span>
+                          <p className="text-sm text-gray-500 mt-1 leading-relaxed">Academic conference travel (e.g., AFA, WFA), open-access publication fees, hosting workshops with regulators.</p>
+                        </div>
+                      </div>
+                      <div className="text-right shrink-0 ml-4">
+                        <div className="font-bold text-lg" style={{ color: "#303841" }}>${(project.goalAmount * 0.15).toLocaleString()}</div>
+                        <div className="text-sm font-semibold text-gray-500">15%</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
