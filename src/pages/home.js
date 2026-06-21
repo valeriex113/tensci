@@ -1,6 +1,7 @@
 import { DollarSign, BookOpen, TrendingUp, Users, CheckCircle, Star } from "lucide-react";
 import { mockProposals, mockPublications } from "../data/MockData";
 import { ProposalCard, PublicationCard } from "../components/card";
+import { InfiniteCardRow } from "../components/InfiniteCardRow";
 
 export function Home() {
   const almostFundedProps = mockProposals.filter((project) => project.daysLeft < 7);
@@ -90,11 +91,12 @@ export function Home() {
               <p className="text-gray-600">Proposals gaining momentum</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {almostFundedProps.map((project) => (
-              <ProposalCard key={project.id} project={project} />
-            ))}
-          </div>
+        </div>
+        <div className="px-4 md:px-8">
+          <InfiniteCardRow
+            items={almostFundedProps}
+            renderItem={(project) => <ProposalCard project={project} />}
+          />
         </div>
       </section>
 
@@ -110,11 +112,12 @@ export function Home() {
               <p className="text-gray-600">Proposals with a lot of support</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {popularProps.map((project) => (
-              <ProposalCard key={project.id} project={project} />
-            ))}
-          </div>
+        </div>
+        <div className="px-4 md:px-8">
+          <InfiniteCardRow
+            items={popularProps}
+            renderItem={(project) => <ProposalCard project={project} />}
+          />
         </div>
       </section>
 
@@ -122,19 +125,20 @@ export function Home() {
       <section className="bg-white py-20">
         <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
           <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-50">
-              <BookOpen className="h-6 w-6 text-purple-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: "#EAF2F2" }}>
+              <BookOpen className="h-6 w-6" style={{ color: "#76ABAE" }} />
             </div>
             <div>
               <h2 className="text-3xl font-bold" style={{ color: "#303841" }}>Popular Publications</h2>
               <p className="text-gray-600">Successfully funded proposals</p>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {fundedPublications.map((project) => (
-              <PublicationCard key={project.id} project={project} />
-            ))}
-          </div>
+        </div>
+        <div className="px-4 md:px-8">
+          <InfiniteCardRow
+            items={fundedPublications}
+            renderItem={(project) => <PublicationCard project={project} />}
+          />
         </div>
       </section>
     </div>
