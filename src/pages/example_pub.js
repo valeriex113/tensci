@@ -115,7 +115,7 @@ export function ExamplePub() {
 
                     {/* ── Title ── */}
                     <h1 className="font-serif text-3xl md:text-4xl font-bold leading-tight mb-6 tracking-tight" style={{ color: "#303841" }}>
-                        Example Article Title Goes Here: A Placeholder for Demonstration Purposes
+                        Towards GPU Passthrough in Intel TDX: Design Challenges and Early Baselines
                     </h1>
 
                     {/* ── Authors ── */}
@@ -148,7 +148,7 @@ export function ExamplePub() {
                     <div className="flex flex-wrap gap-6 p-4 md:px-5 rounded-lg mb-6 border border-gray-100" style={{ backgroundColor: "#F5F5F5" }}>
                         <div className="flex flex-col gap-1">
                             <span className="text-xs font-bold uppercase tracking-wide text-gray-500">DOI</span>
-        
+
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="text-xs font-bold uppercase tracking-wide text-gray-500">Received</span>
