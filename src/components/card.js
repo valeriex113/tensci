@@ -30,7 +30,10 @@ export function ProposalCard({ project }) {
             <span className="text-xs text-gray-400">{project.updates} updates</span>
           </div>
 
-          <h3 className="text-base font-semibold line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">
+          <h3
+            className="text-base font-semibold line-clamp-2 transition-colors leading-snug group-hover:text-[#76ABAE]"
+            style={{ color: "#303841" }}
+          >
             {project.title}
           </h3>
           <p className="text-xs text-gray-500 mt-0.5">by {project.researcher}</p>
@@ -44,20 +47,23 @@ export function ProposalCard({ project }) {
             >
               <ProgressPrimitive.Indicator
                 data-slot="progress-indicator"
-                className="bg-blue-600 h-full w-full flex-1 transition-all"
-                style={{ transform: `translateX(-${100 - (percentFunded || 0)}%)` }}
+                className="h-full w-full flex-1 transition-all"
+                style={{
+                  backgroundColor: "#76ABAE",
+                  transform: `translateX(-${100 - (percentFunded || 0)}%)`,
+                }}
               />
             </ProgressPrimitive.Root>
             <div className="flex items-center justify-between text-xs">
               <div>
-                <span className="font-bold text-base">
+                <span className="font-bold text-base" style={{ color: "#303841" }}>
                   ${project.currentAmount.toLocaleString()}
                 </span>
                 <span className="text-gray-400 ml-1">
                   of ${project.goalAmount.toLocaleString()}
                 </span>
               </div>
-              <span className="font-semibold text-blue-600">
+              <span className="font-semibold" style={{ color: "#76ABAE" }}>
                 {Math.round(percentFunded)}%
               </span>
             </div>
@@ -108,7 +114,10 @@ export function PublicationCard({ project }) {
             <span className="text-xs text-gray-400">{project.updates} updates</span>
           </div>
 
-          <h3 className="text-base font-semibold line-clamp-2 group-hover:text-blue-600 transition-colors leading-snug">
+          <h3
+            className="text-base font-semibold line-clamp-2 transition-colors leading-snug group-hover:text-[#76ABAE]"
+            style={{ color: "#303841" }}
+          >
             {project.title}
           </h3>
           <p className="text-xs text-gray-500 mt-0.5">by {project.researcher}</p>
@@ -117,7 +126,7 @@ export function PublicationCard({ project }) {
         <div data-slot="card-content" className="px-4 pb-2">
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-bold text-base">
+              <span className="font-bold text-base" style={{ color: "#303841" }}>
                 ${project.goalAmount.toLocaleString()}
               </span>
             </div>
@@ -141,4 +150,3 @@ export function PublicationCard({ project }) {
     </Link>
   );
 }
-

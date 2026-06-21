@@ -59,15 +59,15 @@ export function Post() {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#F5F5F5" }}>
       <section className="pt-8 pb-20">
         <div className="mx-auto w-full max-w-3xl px-4 md:px-8">
           <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50">
-              <FilePlus2 className="h-6 w-6 text-blue-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: "#EAF2F2" }}>
+              <FilePlus2 className="h-6 w-6" style={{ color: "#76ABAE" }} />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">Post a Proposal</h2>
+              <h2 className="text-3xl font-bold" style={{ color: "#303841" }}>Post a Proposal</h2>
               <p className="text-sm text-gray-500">Share your research with potential backers</p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export function Post() {
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             <div>
-              <label htmlFor="title" className="mb-1 block text-sm font-semibold text-gray-900">
+              <label htmlFor="title" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                 Project title
               </label>
               <input
@@ -91,13 +91,13 @@ export function Post() {
                 value={form.title}
                 onChange={handleChange}
                 placeholder="Novel Treatment for Alzheimer's Disease"
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
               />
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               <div>
-                <label htmlFor="researcher" className="mb-1 block text-sm font-semibold text-gray-900">
+                <label htmlFor="researcher" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                   Researcher name
                 </label>
                 <input
@@ -108,12 +108,12 @@ export function Post() {
                   value={form.researcher}
                   onChange={handleChange}
                   placeholder="Dr. Sarah Chen"
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="institution" className="mb-1 block text-sm font-semibold text-gray-900">
+                <label htmlFor="institution" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                   Institution
                 </label>
                 <input
@@ -124,14 +124,14 @@ export function Post() {
                   value={form.institution}
                   onChange={handleChange}
                   placeholder="Stanford Medical Center"
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div>
-                <label htmlFor="category" className="mb-1 block text-sm font-semibold text-gray-900">
+                <label htmlFor="category" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                   Category
                 </label>
                 <select
@@ -139,7 +139,7 @@ export function Post() {
                   name="category"
                   value={form.category}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm focus:outline-none"
                 >
                   {CATEGORIES.map((category) => (
                     <option key={category} value={category}>
@@ -150,7 +150,7 @@ export function Post() {
               </div>
 
               <div>
-                <label htmlFor="goalAmount" className="mb-1 block text-sm font-semibold text-gray-900">
+                <label htmlFor="goalAmount" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                   Funding goal ($)
                 </label>
                 <input
@@ -162,12 +162,12 @@ export function Post() {
                   value={form.goalAmount}
                   onChange={handleChange}
                   placeholder="500000"
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
                 />
               </div>
 
               <div>
-                <label htmlFor="daysLeft" className="mb-1 block text-sm font-semibold text-gray-900">
+                <label htmlFor="daysLeft" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                   Campaign length (days)
                 </label>
                 <input
@@ -179,13 +179,13 @@ export function Post() {
                   value={form.daysLeft}
                   onChange={handleChange}
                   placeholder="30"
-                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                  className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="imageUrl" className="mb-1 block text-sm font-semibold text-gray-900">
+              <label htmlFor="imageUrl" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                 Cover image
               </label>
               <input
@@ -195,7 +195,7 @@ export function Post() {
                 value={form.imageUrl}
                 onChange={handleChange}
                 placeholder="medical research laboratory"
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
               />
               <p className="mt-1 text-xs text-gray-400">
                 Image URL, or a short description if your image pipeline generates one.
@@ -203,7 +203,7 @@ export function Post() {
             </div>
 
             <div>
-              <label htmlFor="tags" className="mb-1 block text-sm font-semibold text-gray-900">
+              <label htmlFor="tags" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                 Tags
               </label>
               <input
@@ -213,13 +213,13 @@ export function Post() {
                 value={form.tags}
                 onChange={handleChange}
                 placeholder="Neuroscience, Clinical Trial, Drug Development"
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
               />
               <p className="mt-1 text-xs text-gray-400">Separate tags with commas.</p>
             </div>
 
             <div>
-              <label htmlFor="description" className="mb-1 block text-sm font-semibold text-gray-900">
+              <label htmlFor="description" className="mb-1 block text-sm font-semibold" style={{ color: "#303841" }}>
                 Project description
               </label>
               <textarea
@@ -230,17 +230,18 @@ export function Post() {
                 value={form.description}
                 onChange={handleChange}
                 placeholder="Describe your research, methodology, and what backers' funding will support..."
-                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-blue-300 focus:outline-none"
+                className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none"
               />
             </div>
 
             <button
               type="submit"
-              className="self-start rounded-full bg-gray-900 px-6 py-2.5 text-sm font-semibold text-white hover:bg-gray-800"
+              className="self-start rounded-full px-6 py-2.5 text-sm font-semibold text-white"
+              style={{ backgroundColor: "#303841" }}
             >
-                <Link to="/">
-                  Submit proposal
-                </Link>
+              <Link to="/">
+                Submit proposal
+              </Link>
             </button>
           </form>
         </div>

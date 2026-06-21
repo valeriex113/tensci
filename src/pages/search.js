@@ -37,22 +37,22 @@ export function Search() {
 
   if (!query) {
     return (
-      <section className="py-20 text-center">
+      <section className="py-20 text-center" style={{ backgroundColor: "#F5F5F5" }}>
         <p className="text-gray-500">Type something into the search bar to get started.</p>
       </section>
     );
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#F5F5F5" }}>
       <section className="pt-8 pb-20">
         <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
           <div className="mb-8 flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50">
-              <SearchIcon className="h-6 w-6 text-blue-600" />
+            <div className="flex h-12 w-12 items-center justify-center rounded-full" style={{ backgroundColor: "#EAF2F2" }}>
+              <SearchIcon className="h-6 w-6" style={{ color: "#76ABAE" }} />
             </div>
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold" style={{ color: "#303841" }}>
                 Results for "{query}"
               </h2>
               <p className="text-sm text-gray-500">
@@ -67,7 +67,7 @@ export function Search() {
 
           {matchedProposals.length > 0 && (
             <div className="mb-12">
-              <h3 className="mb-4 text-xl font-semibold text-gray-900">
+              <h3 className="mb-4 text-xl font-semibold" style={{ color: "#303841" }}>
                 Proposals ({matchedProposals.length})
               </h3>
               <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
@@ -80,7 +80,7 @@ export function Search() {
 
           {matchedPublications.length > 0 && (
             <div>
-              <h3 className="mb-4 text-xl font-semibold text-gray-900">
+              <h3 className="mb-4 text-xl font-semibold" style={{ color: "#303841" }}>
                 Publications ({matchedPublications.length})
               </h3>
               <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">

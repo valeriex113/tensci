@@ -1,6 +1,7 @@
 import { Link, Outlet, ScrollRestoration, useNavigate } from "react-router";
 import { useState } from "react";
 import { Search as SearchIcon, UserCircle, Plus, Globe } from "lucide-react";
+import logo from "./data/logo_tensci.png";
 
 const LANGUAGES = ["EN", "JP", "ZH", "FR", "ES"];
 
@@ -18,16 +19,16 @@ export function RootLayout() {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "#F5F5F5" }}>
       <ScrollRestoration />
-      <header className="border-b-2 border-blue-600 bg-white px-6">
+      <header className="border-b-2 px-6" style={{ borderColor: "#76ABAE" }}>
         <nav className="mx-auto flex max-w-7xl items-center gap-8 py-4">
           <div className="flex items-center gap-8">
-            <Link to="/" className="text-lg font-bold text-gray-900">
-              TenSci
+            <Link to="/" className="flex items-center">
+              <img src={logo} alt="TenSci" className="h-8 w-auto" />
             </Link>
 
-            <div className="flex items-center gap-8 text-gray-700">
+            <div className="flex items-center gap-8" style={{ color: "#303841" }}>
               <Link to="/" className="hover:text-blue-600">
                 Home
               </Link>
@@ -50,17 +51,19 @@ export function RootLayout() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search research..."
-              className="w-full rounded-full border border-transparent bg-gray-100 py-1.5 pl-9 pr-4 text-sm placeholder-gray-400 transition-all focus:border-blue-300 focus:bg-white focus:outline-none"
+              className="w-full rounded-full border py-1.5 pl-9 pr-4 text-sm placeholder-gray-400 transition-all focus:border-[#76ABAE] focus:bg-white focus:outline-none"
+              style={{ backgroundColor: "#F5F5F5", borderColor: "#76ABAE" }}
             />
           </form>
 
           <button
             type="button"
-            className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-gray-900 px-4 py-1.5 text-sm font-semibold text-white hover:bg-gray-800"
+            className="ml-auto inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-sm font-semibold text-white transition-colors"
+            style={{ backgroundColor: "#76ABAE" }}
           >
             <Plus className="h-4 w-4" />
-            <Link to="/post" className="hover:text-blue-600">
-                Post Proposal
+            <Link to="/post" className="hover:text-blue-300">
+              Post Proposal
             </Link>
           </button>
 
@@ -68,7 +71,8 @@ export function RootLayout() {
             <button
               type="button"
               onClick={() => setLanguageMenuOpen((open) => !open)}
-              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold text-gray-700 hover:bg-gray-100"
+              className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-gray-100"
+              style={{ color: "#303841" }}
             >
               <Globe className="h-4 w-4" />
               {language}
@@ -84,9 +88,11 @@ export function RootLayout() {
                         setLanguage(lang);
                         setLanguageMenuOpen(false);
                       }}
-                      className={`block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 ${
-                        lang === language ? "font-semibold text-blue-600" : "text-gray-700"
-                      }`}
+                      className="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50"
+                      style={{
+                        color: lang === language ? "#76ABAE" : "#303841",
+                        fontWeight: lang === language ? 600 : 400,
+                      }}
                     >
                       {lang}
                     </button>
@@ -96,7 +102,7 @@ export function RootLayout() {
             )}
           </div>
 
-          <button type="button" className="text-gray-700 hover:text-blue-600">
+          <button type="button" className="hover:text-blue-600" style={{ color: "#303841" }}>
             <UserCircle className="h-7 w-7" />
           </button>
         </nav>
