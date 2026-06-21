@@ -8,6 +8,7 @@ import { ExamplePub } from "./pages/example_pub";
 import { NotFoundPage } from "./NotFoundPage";
 import { About } from "./pages/about";
 import { Search } from "./pages/search";
+import { Post } from "./pages/post";
 
 export const router = createBrowserRouter([
   {
@@ -21,7 +22,8 @@ export const router = createBrowserRouter([
       { path: "publication/:id", Component: ExamplePub },
       { path: "*", Component: NotFoundPage },
       { path: "about", Component: About }, 
-      { path: "search", Component: Search}
+      { path: "search", Component: Search}, 
+      { path: "post", Component: Post }
     ],
   },
 ]);
