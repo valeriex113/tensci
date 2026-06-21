@@ -1,4 +1,4 @@
-export const categories = [
+export const mockCategories = [
   "Economics",
   "Medical Research",
   "Environmental Science",
@@ -19,7 +19,7 @@ export const mockProposals = [
     category: "Medical Research",
     goalAmount: 500000,
     currentAmount: 387500,
-    backers: 1243,
+    backers: 4243,
     daysLeft: 12,
     imageUrl: "medical research laboratory",
     tags: ["Neuroscience", "Clinical Trial", "Drug Development"],
@@ -47,7 +47,7 @@ export const mockProposals = [
     category: "Technology",
     goalAmount: 750000,
     currentAmount: 425000,
-    backers: 2103,
+    backers: 3103,
     daysLeft: 45,
     imageUrl: "quantum computer technology",
     tags: ["Quantum Computing", "Climate Science", "AI"],
@@ -103,7 +103,7 @@ export const mockProposals = [
     category: "Technology",
     goalAmount: 320000,
     currentAmount: 267000,
-    backers: 1034,
+    backers: 3034,
     daysLeft: 15,
     imageUrl: "sustainable technology innovation",
     tags: ["Sustainability", "Materials Science", "E-waste"],
